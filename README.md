@@ -13,9 +13,11 @@
 Basic auth:
 
 Install httpd-tools
+
     $ yum install httpd-tools -y
 
 Generate hash
+
     $ htpasswd -nBC 12 '' | tr -d ':\n'
 
 
