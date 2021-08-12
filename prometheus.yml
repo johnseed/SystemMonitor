@@ -1,5 +1,5 @@
 global:
-  scrape_interval: 15s
+  scrape_interval: 5s
 
 
 scrape_configs:
@@ -11,4 +11,7 @@ scrape_configs:
 
 - job_name: node
   static_configs:
-  - targets: ['192.168.43.178:9182']
+  - targets: ['172.17.211.8:9100', '172.29.121.59:9100']
+  basic_auth:
+      username: prometheus
+      password: xxx

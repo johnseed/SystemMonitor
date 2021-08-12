@@ -8,14 +8,27 @@
 
 ## node_exporter
 
+## Auth
+
+Basic auth:
+
+Install httpd-tools
+    $ yum install httpd-tools -y
+
+Generate hash
+    $ htpasswd -nBC 12 '' | tr -d ':\n'
+
+
 ### Linux
 
     $ docker run -d \
         --net="host" \
         --pid="host" \
         -v "/:/host:ro,rslave" \
+        -v "/root/monitor/node_exporter/config.yaml:/config.yaml" \
         quay.io/prometheus/node-exporter:latest \
-        --path.rootfs=/host
+        --path.rootfs=/host \
+        --web.config=/config.yaml
 
 ### Windows
 
@@ -30,9 +43,18 @@ https://prometheus.io/docs/guides/cadvisor/
 
 ## Grafana
 
+Dashboards :   
+
+* 8919 node_exporter  
+* 14282 cAdvisor
+
+Run :  
+
+* docker
+
     $ docker run -d --name=grafana -p 3000:3000 grafana/grafana
 
-docker compose
+* docker compose
 ```yml
   grafana:
     image: grafana/grafana
