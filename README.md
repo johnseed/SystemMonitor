@@ -8,7 +8,7 @@
 
 ## node_exporter
 
-## Auth
+### Auth
 
 Basic auth:
 
@@ -19,6 +19,13 @@ Install httpd-tools
 Generate hash
 
     $ htpasswd -nBC 12 '' | tr -d ':\n'
+    
+config.yml
+```yaml
+basic_auth_users:
+  #The currently set user name is Prometheus. You can set multiple
+  prometheus: $xxx.xxx.xx
+```
 
 
 ### Linux
